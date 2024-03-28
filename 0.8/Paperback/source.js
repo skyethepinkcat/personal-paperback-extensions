@@ -2759,14 +2759,14 @@ const Common_1 = require("./Common");
 //  - getTags() which is called on the homepage
 //  - search method which is called even if the user search in an other source
 exports.PaperbackInfo = {
-    version: '1.2.12',
-    name: 'Paperback',
+    version: '1.0.0',
+    name: 'Skynet',
     icon: 'icon.png',
-    author: 'Lemon | Faizan Durrani',
-    authorWebsite: 'https://github.com/FramboisePi',
+    author: 'skyenet',
+    authorWebsite: 'https://github.com/skyethepinkcat',
     description: 'Komga client extension for Paperback',
     contentRating: types_1.ContentRating.EVERYONE,
-    websiteBaseURL: 'https://komga.org',
+    websiteBaseURL: 'https://komga.skyenet.online',
     sourceTags: [
         {
             text: 'Self hosted',
