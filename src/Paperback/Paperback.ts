@@ -39,14 +39,14 @@ import { getAuthorizationString,
 //  - getTags() which is called on the homepage
 //  - search method which is called even if the user search in an other source
 export const PaperbackInfo: SourceInfo = {
-    version: '1.2.12',
-    name: 'Paperback',
+    version: '1.0.0',
+    name: 'Skynet',
     icon: 'icon.png',
-    author: 'Lemon | Faizan Durrani',
-    authorWebsite: 'https://github.com/FramboisePi',
+    author: 'skyenet',
+    authorWebsite: 'https://github.com/skyethepinkcat',
     description: 'Komga client extension for Paperback',
     contentRating: ContentRating.EVERYONE,
-    websiteBaseURL: 'https://komga.org',
+    websiteBaseURL: 'https://komga.skyenet.online',
     sourceTags: [
         {
             text: 'Self hosted',
