@@ -85,10 +85,12 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
         return response
     }
     async interceptRequest(request: Request): Promise<Request> {
+        console.error('do errors work?');
         // Paper's Note: This hack no longer works on iOS 17
         // ORIGINAL NOTE: Doing it like this will make downloads work tried every other method did not work, if there is a better method make edit it and make pull request
+        console.log('Intercepting....');
         if (request.url.includes('intercept*')) {
-            console.log('HERE');
+            console.log('Includes intercept');
             console.log(request.url);
             const url = request?.url?.split('*').pop() ?? ''
              request.headers = {
@@ -99,6 +101,9 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
          }
         if (request.headers === undefined) {
             request.headers = {}
+        }
+        else {
+            console.log(request.url);
         }
         // We mustn't call this.getAuthorizationString() for the stateful submission request.
         // This procedure indeed catchs the request used to check user credentials
