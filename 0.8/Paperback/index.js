@@ -2802,17 +2802,20 @@ class KomgaRequestInterceptor {
         });
     }
     interceptRequest(request) {
+        var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
             // Paper's Note: This hack no longer works on iOS 17
             // ORIGINAL NOTE: Doing it like this will make downloads work tried every other method did not work, if there is a better method make edit it and make pull request
-            // if (request.url.includes('intercept*')) {
-            //     const url = request?.url?.split('*').pop() ?? ''
-            //     request.headers = {
-            //         'authorization': await getAuthorizationString(this.stateManager)
-            //     }
-            //     request.url = url
-            //     return request
-            // }
+            if (request.url.includes('intercept*')) {
+                console.log('HERE');
+                console.log(request.url);
+                const url = (_b = (_a = request === null || request === void 0 ? void 0 : request.url) === null || _a === void 0 ? void 0 : _a.split('*').pop()) !== null && _b !== void 0 ? _b : '';
+                request.headers = {
+                    'authorization': yield (0, Common_1.getAuthorizationString)(this.stateManager)
+                };
+                request.url = url;
+                return request;
+            }
             if (request.headers === undefined) {
                 request.headers = {};
             }
