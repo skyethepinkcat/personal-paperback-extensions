@@ -103,7 +103,7 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
             request.headers = {}
         }
         else {
-            console.log(request.url);
+            console.log(request);
         }
         // We mustn't call this.getAuthorizationString() for the stateful submission request.
         // This procedure indeed catchs the request used to check user credentials
