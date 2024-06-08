@@ -2820,7 +2820,10 @@ class KomgaRequestInterceptor {
             if (request.headers === undefined) {
                 request.headers = {};
             }
-            console.log(request.url);
+            console.log("URL:" + request.url);
+            if (request.param === undefined) {
+                console.log("Request:" + request.param);
+            }
             // We mustn't call this.getAuthorizationString() for the stateful submission request.
             // This procedure indeed catchs the request used to check user credentials
             // which can happen before an authorizationString is saved,
@@ -2828,8 +2831,10 @@ class KomgaRequestInterceptor {
             // Thus we only inject an authorizationString if none are defined in the request
             if (request.headers.authorization === undefined) {
                 console.log("Authorization is undefined.");
-                console.log(yield (0, Common_1.getAuthorizationString)(this.stateManager));
-                request.headers.authorization = yield (0, Common_1.getAuthorizationString)(this.stateManager);
+                console.log("Authorization String:" + (yield (0, Common_1.getAuthorizationString)(this.stateManager)));
+                request.headers = {
+                    'authorization': yield (0, Common_1.getAuthorizationString)(this.stateManager)
+                };
             }
             return request;
         });
