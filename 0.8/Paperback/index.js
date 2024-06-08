@@ -2829,9 +2829,7 @@ class KomgaRequestInterceptor {
             if (request.headers.authorization === undefined) {
                 request.headers.authorization = yield (0, Common_1.getAuthorizationString)(this.stateManager);
             }
-            else {
-                console.log(request.headers.authorization);
-            }
+            console.log(request.headers.authorization);
             return request;
         });
     }
