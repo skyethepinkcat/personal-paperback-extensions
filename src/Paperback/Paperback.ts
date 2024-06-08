@@ -87,14 +87,16 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
     async interceptRequest(request: Request): Promise<Request> {
         // Paper's Note: This hack no longer works on iOS 17
         // ORIGINAL NOTE: Doing it like this will make downloads work tried every other method did not work, if there is a better method make edit it and make pull request
-        // if (request.url.includes('intercept*')) {
-        //     const url = request?.url?.split('*').pop() ?? ''
-        //     request.headers = {
-        //         'authorization': await getAuthorizationString(this.stateManager)
-        //     }
-        //     request.url = url
-        //     return request
-        // }
+        if (request.url.includes('intercept*')) {
+            console.log('HERE');
+            console.log(request.url);
+            const url = request?.url?.split('*').pop() ?? ''
+             request.headers = {
+                 'authorization': await getAuthorizationString(this.stateManager)
+             }
+             request.url = url
+             return request
+         }
         if (request.headers === undefined) {
             request.headers = {}
         }
