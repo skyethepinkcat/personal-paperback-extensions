@@ -2820,9 +2820,7 @@ class KomgaRequestInterceptor {
             if (request.headers === undefined) {
                 request.headers = {};
             }
-            else {
-                console.log(JSON.stringify(request, NULL, 4));
-            }
+            console.log(JSON.stringify(request.headers, NULL, 4));
             // We mustn't call this.getAuthorizationString() for the stateful submission request.
             // This procedure indeed catchs the request used to check user credentials
             // which can happen before an authorizationString is saved,
