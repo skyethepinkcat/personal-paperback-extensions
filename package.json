@@ -1,6 +1,6 @@
 {
   "name": "extensions-default",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repositoryName": "Default Extensions",
   "description": "Default extensions for Paperback 0.8",
   "main": "lib/index.js",

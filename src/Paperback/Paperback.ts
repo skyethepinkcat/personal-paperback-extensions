@@ -108,9 +108,10 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
         // raising an error in getAuthorizationString when we check for its existence
         // Thus we only inject an authorizationString if none are defined in the request
         if (request.headers.authorization === undefined) {
+          console.log("Authorization is undefined.");
+            console.log(await getAuthorizationString(this.stateManager));
             request.headers.authorization = await getAuthorizationString(this.stateManager)
         } 
-        console.log(request.headers.authorization);
         return request
     }
 }
