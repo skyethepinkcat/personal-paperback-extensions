@@ -87,23 +87,15 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
     async interceptRequest(request: Request): Promise<Request> {
         // Paper's Note: This hack no longer works on iOS 17
         // ORIGINAL NOTE: Doing it like this will make downloads work tried every other method did not work, if there is a better method make edit it and make pull request
-        console.log('Intercepting HERE....');
-        if (request.url.includes('intercept*')) {
-            console.log('Includes intercept');
-            console.log(request.url);
-            const url = request?.url?.split('*').pop() ?? ''
-             request.headers = {
-                 'authorization': await getAuthorizationString(this.stateManager)
-             }
-             request.url = url
-             return request
-         }
+        // if (request.url.includes('intercept*')) {
+        //    const url = request?.url?.split('*').pop() ?? ''
+        //     request.headers = {
+        //         'authorization': await getAuthorizationString(this.stateManager)
+        //     }
+        //     return request
+        // }
         if (request.headers === undefined) {
             request.headers = {}
-        }
-        console.log("URL:" + request.url);
-        if (request.param === undefined) {
-          console.log("Request:" + request.param);
         }
         // We mustn't call this.getAuthorizationString() for the stateful submission request.
         // This procedure indeed catchs the request used to check user credentials
@@ -111,8 +103,6 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
         // raising an error in getAuthorizationString when we check for its existence
         // Thus we only inject an authorizationString if none are defined in the request
         if (request.headers.authorization === undefined) {
-          console.log("Authorization is undefined.");
-          console.log("Authorization String:" + await getAuthorizationString(this.stateManager));
           request.headers = {
               'authorization': await getAuthorizationString(this.stateManager)
             }
