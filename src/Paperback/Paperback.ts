@@ -101,7 +101,10 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
         if (request.headers === undefined) {
             request.headers = {}
         }
-        console.log(request.url);
+        console.log("URL:" + request.url);
+        if (request.param === undefined) {
+          console.log("Request:" + request.param);
+        }
         // We mustn't call this.getAuthorizationString() for the stateful submission request.
         // This procedure indeed catchs the request used to check user credentials
         // which can happen before an authorizationString is saved,
@@ -109,8 +112,10 @@ export class KomgaRequestInterceptor implements SourceInterceptor {
         // Thus we only inject an authorizationString if none are defined in the request
         if (request.headers.authorization === undefined) {
           console.log("Authorization is undefined.");
-            console.log(await getAuthorizationString(this.stateManager));
-            request.headers.authorization = await getAuthorizationString(this.stateManager)
+          console.log("Authorization String:" + await getAuthorizationString(this.stateManager));
+          request.headers = {
+              'authorization': await getAuthorizationString(this.stateManager)
+            }
         } 
         return request
     }
